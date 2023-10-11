@@ -37,11 +37,11 @@ Os dados que serão utilizados na análise compreendem o período de uma ano, ou
 | UNIDADE_MEDIDA | Indica se a quantidade vendida do medicamento foi de caixas ou frascos. |
 | CONSELHO_PRESCRITOR | Conselho de Classe do profissional que prescreveu o medicamento vendido. |
 | UF_CONSELHO_PRESCRITOR | Unidade Federativa do Conselho de Classe do profissional que prescreveu o medicamento vendido. |
-| TIPO_RECEITUARIO | Tipo de receituário utilizado na prescrição.<br>Valores e respectivos tipos de receituário:<br>1 – Receita de Controle Especial em 2 vias (Receita Branca);<br>2 – Notificação de Receita B (Notificação Azul);<br>3 – Notificação de Receita Especial (Notificação Branca);<br>4 – Notificação de Receita A (Notificação Amarela); 5 – Receita Antimicrobiano em 2 vias. |
+| TIPO_RECEITUARIO | Tipo de receituário utilizado na prescrição.<br>Valores e respectivos tipos de receituário:<br>1 – Receita de Controle Especial em 2 vias (Receita Branca);<br>2 – Notificação de Receita B (Notificação Azul);<br>3 – Notificação de Receita Especial (Notificação Branca);<br>4 – Notificação de Receita A (Notificação Amarela);<br>5 – Receita Antimicrobiano em 2 vias. |
 | CID10 | Classificação Internacional de Doença (aplicável apenas a medicamentos antimicrobianos). |
-| SEXO | Sexo do paciente (aplicável apenas a medicamentos antimicrobianos). Valor 1 para o sexo masculino, valor 2 para o sexo feminino. |
+| SEXO | Sexo do paciente (aplicável apenas a medicamentos antimicrobianos).<br>Valor 1 para o sexo masculino, valor 2 para o sexo feminino. |
 | IDADE | Valor numérico que representa a idade do paciente, em meses ou anos (aplicável apenas a medicamentos antimicrobianos). |
-| UNIDADE_IDADE | Unidade de medida da idade do paciente, que pode ser em meses ou anos (aplicável apenas a medicamentos antimicrobianos). Valor 1 para unidade de medida em anos, valor 2 para unidade de medida em meses. |
+| UNIDADE_IDADE | Unidade de medida da idade do paciente, que pode ser em meses ou anos (aplicável apenas a medicamentos antimicrobianos).<br>Valor 1 para unidade de medida em anos, valor 2 para unidade de medida em meses. |
 
 > fonte: [Dados abertos - Agência Nacional de Vigilância Sanitária - ANVISA](https://dados.gov.br/dados/conjuntos-dados/venda-de-medicamentos-controlados-e-antimicrobianos---medicamentos-industrializados "Dados abertos - Agência Nacional de Vigilância Sanitária - ANVISA")
 
