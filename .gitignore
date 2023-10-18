@@ -3,4 +3,5 @@ _temp
 *.pdf
 *.txt
 *.html
+*.csv
 !requirements.txt
