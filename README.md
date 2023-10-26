@@ -18,7 +18,7 @@ Os dados que serão utilizados na análise compreendem o período de uma ano, ou
 
 ## 📋 Tópicos da análise
 
-- Construir uma ABT (analytical base table).
+- Construir ABTs (analytical base table) para execução das análises.
 - Construção de perfil de pacientes.
 - Distribuição de pacientes por município.
 - Demanda de medicamentos por paciente.
