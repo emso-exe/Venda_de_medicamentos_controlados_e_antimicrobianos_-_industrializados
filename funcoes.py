@@ -20,8 +20,25 @@ def gerar_metadados(dataframe):
     metadados = metadados.reset_index(drop=True)
     return metadados
 
-# Função para exibir a quantidade de valores únicos
+# Função para geração de gráfico de variáveis com dados nulos
 
+def grafico_bar_valores_nulos(dataframe):
+    '''
+    Gera um gráfico de barras das variáveis destacando os dados nulos/ausentes
+
+    :param coluna: Dataframe
+        Dataframe ser analisado.
+    '''
+    import matplotlib.pyplot as plt
+    import missingno as msno
+    plt.figure(figsize=(10, 5))
+    ax = plt.subplot()
+    msno.bar(dataframe, color='dodgerblue', fontsize=8, ax=ax)
+    plt.title('Visualização das variáveis com dados nulos/ausentes\n')
+    plt.tight_layout()
+
+
+# Função para exibir a quantidade de valores únicos
 
 def exibe_valores_unicos(coluna):
     '''
