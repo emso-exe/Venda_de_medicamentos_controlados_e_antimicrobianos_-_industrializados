@@ -54,3 +54,26 @@ def exibe_valores_unicos(coluna):
     coluna_qtde = coluna_qtde.rename(columns={'count': 'Quantidade'})
     coluna_qtde = coluna_qtde.T
     return coluna_qtde
+
+# Função para exibição dos valores únicos dos outliers
+
+def valores_outliers(dataframe, coluna, limite, sinal):
+    '''
+    Exibe os valores únicos dos outliers
+
+    :param col: Column Dataframe
+        Dataframe e coluna a ser analisado.
+    :param lim: int
+        Valor do limite inferior ou superior.
+    :param sinal: str
+        Símbolo de maior(>) ou menor(<).
+    '''
+    import pandas as pd
+    import numpy as np
+    arr = np.array(dataframe[coluna])
+    if sinal == '>':
+        val = arr[np.where(arr > limite)[0]]
+    else:
+        val = arr[np.where(arr < limite)[0]]
+    print(f'\n{coluna.upper()}: {np.unique(val)}')
+    
