@@ -20,6 +20,7 @@ def gerar_metadados(dataframe):
     metadados = metadados.reset_index(drop=True)
     return metadados
 
+
 # Função para geração de gráfico de variáveis com dados nulos
 
 def grafico_bar_valores_nulos(dataframe):
@@ -38,23 +39,6 @@ def grafico_bar_valores_nulos(dataframe):
     plt.tight_layout()
 
 
-# Função para exibir a quantidade de valores únicos
-
-def exibe_valores_unicos(coluna):
-    '''
-    Exibe a quantidade de valores únicos de coluna(s) específica(s)
-
-    :param coluna: Column Dataframe
-        Dataframe e coluna a ser analisado.
-    :return: Dataframe
-        DataFrame contendo os nome e quantidade.
-    '''
-    import pandas as pd
-    coluna_qtde = pd.DataFrame(coluna.value_counts().sort_index())
-    coluna_qtde = coluna_qtde.rename(columns={'count': 'Quantidade'})
-    coluna_qtde = coluna_qtde.T
-    return coluna_qtde
-
 # Função para exibição dos valores únicos dos outliers
 
 def valores_outliers(dataframe, coluna, limite, sinal):
@@ -67,8 +51,8 @@ def valores_outliers(dataframe, coluna, limite, sinal):
         Valor do limite inferior ou superior.
     :param sinal: str
         Símbolo de maior(>) ou menor(<).
+    :return: None
     '''
-    import pandas as pd
     import numpy as np
     arr = np.array(dataframe[coluna])
     if sinal == '>':
@@ -76,4 +60,63 @@ def valores_outliers(dataframe, coluna, limite, sinal):
     else:
         val = arr[np.where(arr < limite)[0]]
     print(f'\n{coluna.upper()}: {np.unique(val)}')
+
+
+# Função para exibição da quantidade de valores nulos
+
+def exibe_quantidade_nulos(dataframe, coluna):
+    '''
+    Exibe a quantidade e percentual de valores nulos de uma coluna específica
+
+    :param df: Dataframe
+        DataFrame a ser analisado.
+    :param coluna: Column Dataframe
+        Coluna do dataframe a ser analisado.
+    :return: None
+    '''
+    try:
+        qtde_nulos = dataframe[coluna].isnull().sum()
+        perc_nulos = round((dataframe[coluna].isnull().sum()/len(dataframe[coluna]))*100, 2)
+        print(f'\nQuantidade de registros nulos na coluna {coluna}: {qtde_nulos} ({perc_nulos} %)')
+    except:
+        print(f'\nColuna {coluna} não existe ou foi apagada.')
+
+
+# Função para geração de gráfico countplot     
+
+def graf_countplot(dataframe, x, hue=None, rotation=0):
+    '''
+    Função para gerar um gráfico countplot.
+
+    :param data: DataFrame
+        DataFrame contendo os dados.
+    :param x: str
+        Nome da coluna a ser plotada no eixo x.
+    :param hue: str, opcional
+        Nome da coluna usada para distinguir subcategorias no eixo x.
+    :param rotation: int, opcional
+        Grau de rotação dos valores das barras do eixo x.
+    '''
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    # Plotar o gráfico
+    plt.figure(figsize=(12, 5))
+    ax = sns.countplot(data=dataframe, x=x, palette='Set2', hue=hue)
     
+    # Adiciona título ao gráfico
+    ax.set_title(f'Countplot da variável categórica: {x}', loc='left')
+    # Remover rótulos dos eixos
+    ax.set(xlabel='', ylabel='')
+    # Ajusta o tamanho dos rótulos
+    ax.tick_params(labelsize=10)
+    # Exibe rótulos sem formatação especial
+    ax.ticklabel_format(style='plain', axis='y')
+    
+    # Adiciona rótulos (valores) nas barras
+    for container in ax.containers:
+        ax.bar_label(container, size=8, rotation=rotation)
+
+    # Ajusta o layout para evitar sobreposição
+    plt.tight_layout()
+    plt.subplots_adjust(wspace=0.15, hspace=0.2)
+    plt.show()
