@@ -84,7 +84,7 @@ def exibe_quantidade_nulos(dataframe, coluna):
 
 # Função para geração de gráfico countplot     
 
-def graf_countplot(dataframe, x, hue=None, rotation=0):
+def graf_countplot(dataframe, x, title='Countplot da variável', hue=None, rotation=0):
     '''
     Função para gerar um gráfico countplot.
 
@@ -104,7 +104,7 @@ def graf_countplot(dataframe, x, hue=None, rotation=0):
     ax = sns.countplot(data=dataframe, x=x, palette='Set2', hue=hue)
     
     # Adiciona título ao gráfico
-    ax.set_title(f'Countplot da variável categórica: {x}', loc='left')
+    ax.set_title(f'{title}\n', loc='left')
     # Remover rótulos dos eixos
     ax.set(xlabel='', ylabel='')
     # Ajusta o tamanho dos rótulos
@@ -114,8 +114,50 @@ def graf_countplot(dataframe, x, hue=None, rotation=0):
     
     # Adiciona rótulos (valores) nas barras
     for container in ax.containers:
-        ax.bar_label(container, size=8, rotation=rotation)
+        ax.bar_label(container, fmt='%.0f', size=8, rotation=rotation)
 
+    # Ajusta o layout para evitar sobreposição
+    plt.tight_layout()
+    plt.subplots_adjust(wspace=0.15, hspace=0.2)
+    plt.show()
+
+
+# Função para geração de gráfico countplot  
+
+def graf_barplot(dataframe, x, y, title='Barplot da variável', hue=None, rotation=0):
+    '''
+    Função para gerar um gráfico de barra.
+
+    :param dataframe: DataFrame
+        DataFrame contendo os dados.
+    :param x: str
+        Nome da coluna a ser plotada no eixo x.
+    :param y: str
+        Nome da coluna a ser plotada no eixo y.
+    :param hue: str, opcional
+        Nome da coluna usada para distinguir subcategorias no eixo x.
+    :param rotation: int, opcional
+        Grau de rotação dos valores das barras do eixo x.
+    '''
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    # Plotar o gráfico
+    plt.figure(figsize=(12, 5))
+    ax = sns.barplot(x=dataframe[x], y=dataframe[y], hue=dataframe[hue], palette='Set2')
+    
+    # Adiciona título ao gráfico
+    ax.set_title(f'{title}\n', loc='left')    
+    # Remover rótulos dos eixos
+    ax.set(xlabel='', ylabel='')
+    # Ajusta o tamanho dos rótulos
+    ax.tick_params(labelsize=10)
+    # Exibe rótulos sem formatação especial
+    ax.ticklabel_format(style='plain', axis='y')
+    
+    # Adiciona rótulos (valores) nas barras com rotação
+    for container in ax.containers:
+        ax.bar_label(container, fmt='%.0f', size=8, rotation=rotation)
+    
     # Ajusta o layout para evitar sobreposição
     plt.tight_layout()
     plt.subplots_adjust(wspace=0.15, hspace=0.2)
