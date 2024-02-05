@@ -1,3 +1,9 @@
+# Definição da paleta de cores
+import seaborn as sns
+palette = sns.color_palette(['#66c2a5', '#fc8d62', '#8da0cb', '#e78ac3', '#a6d854',
+                            '#ffd92f', '#26A69A', '#FF7043', '#7E57C2', '#EC407A', '#4CAF50', '#F9A825'])
+
+
 # Função para geração de um dataframe de metadados
 
 def gerar_metadados(dataframe):
@@ -76,15 +82,17 @@ def exibe_quantidade_nulos(dataframe, coluna):
     '''
     try:
         qtde_nulos = dataframe[coluna].isnull().sum()
-        perc_nulos = round((dataframe[coluna].isnull().sum()/len(dataframe[coluna]))*100, 2)
-        print(f'\nQuantidade de registros nulos na coluna {coluna}: {qtde_nulos} ({perc_nulos} %)')
+        perc_nulos = round(
+            (dataframe[coluna].isnull().sum()/len(dataframe[coluna]))*100, 2)
+        print(
+            f'\nQuantidade de registros nulos na coluna {coluna}: {qtde_nulos} ({perc_nulos} %)')
     except:
         print(f'\nColuna {coluna} não existe ou foi apagada.')
 
 
-# Função para geração de gráfico countplot     
+# Função para geração de gráfico countplot
 
-def graf_countplot(dataframe, x, title='Countplot da variável', hue=None, rotation=0):
+def graf_countplot(dataframe, x, title='Countplot da variável', hue=None, rotation=0, palette=palette):
     '''
     Função para gerar um gráfico countplot.
 
@@ -96,13 +104,15 @@ def graf_countplot(dataframe, x, title='Countplot da variável', hue=None, rotat
         Nome da coluna usada para distinguir subcategorias no eixo x.
     :param rotation: int, opcional
         Grau de rotação dos valores das barras do eixo x.
+    :param palette: str, opcional
+        Paleta de cores pré-definida.        
     '''
     import matplotlib.pyplot as plt
     import seaborn as sns
     # Plotar o gráfico
     plt.figure(figsize=(12, 5))
-    ax = sns.countplot(data=dataframe, x=x, palette='Set2', hue=hue)
-    
+    ax = sns.countplot(data=dataframe, x=x, palette=palette, hue=hue)
+
     # Adiciona título ao gráfico
     ax.set_title(f'{title}\n', loc='left')
     # Remover rótulos dos eixos
@@ -111,7 +121,7 @@ def graf_countplot(dataframe, x, title='Countplot da variável', hue=None, rotat
     ax.tick_params(labelsize=10)
     # Exibe rótulos sem formatação especial
     ax.ticklabel_format(style='plain', axis='y')
-    
+
     # Adiciona rótulos (valores) nas barras
     for container in ax.containers:
         ax.bar_label(container, fmt='%.0f', size=8, rotation=rotation)
@@ -122,9 +132,9 @@ def graf_countplot(dataframe, x, title='Countplot da variável', hue=None, rotat
     plt.show()
 
 
-# Função para geração de gráfico countplot  
+# Função para geração de gráfico countplot
 
-def graf_barplot(dataframe, x, y, title='Barplot da variável', hue=None, rotation=0):
+def graf_barplot(dataframe, x, y, title='Barplot da variável', hue=None, rotation=0, palette=palette):
     '''
     Função para gerar um gráfico de barra.
 
@@ -138,26 +148,29 @@ def graf_barplot(dataframe, x, y, title='Barplot da variável', hue=None, rotati
         Nome da coluna usada para distinguir subcategorias no eixo x.
     :param rotation: int, opcional
         Grau de rotação dos valores das barras do eixo x.
+    :param palette: str, opcional
+        Paleta de cores pré-definida.          
     '''
     import matplotlib.pyplot as plt
     import seaborn as sns
     # Plotar o gráfico
     plt.figure(figsize=(12, 5))
-    ax = sns.barplot(x=dataframe[x], y=dataframe[y], hue=dataframe[hue], palette='Set2')
-    
+    ax = sns.barplot(x=dataframe[x], y=dataframe[y],
+                     hue=hue, palette=palette)
+
     # Adiciona título ao gráfico
-    ax.set_title(f'{title}\n', loc='left')    
+    ax.set_title(f'{title}\n', loc='left')
     # Remover rótulos dos eixos
     ax.set(xlabel='', ylabel='')
     # Ajusta o tamanho dos rótulos
     ax.tick_params(labelsize=10)
     # Exibe rótulos sem formatação especial
     ax.ticklabel_format(style='plain', axis='y')
-    
+
     # Adiciona rótulos (valores) nas barras com rotação
     for container in ax.containers:
         ax.bar_label(container, fmt='%.0f', size=8, rotation=rotation)
-    
+
     # Ajusta o layout para evitar sobreposição
     plt.tight_layout()
     plt.subplots_adjust(wspace=0.15, hspace=0.2)
