@@ -10,11 +10,10 @@ A análise dos dados possibilitará a obtenção de insigths, a identificação 
 - Construção de perfis de pacientes com base nos mendicamentos receitados.
 - Compreender a demanda de medicamentos com base no perfil dos pacientes, por tempo e por município.
 - Obter insights, identificar oportunidades e propor soluções a problemas.
-- Elaboração de painel de informações de medicamentos baseado em filtros.
 
 ## 📃 Compreensão dos dados
 
-Os dados que serão utilizados na análise compreendem o período de uma ano, outubro de 2020 até setembro de 2021, que integram um conjunto de doze arquivos em formato "CSV". Os dados foram extraídos do Sistema Nacional de Gerenciamento de Produtos Controlados (SNGPC), provenientes apenas de farmácias e drogarias privadas que periodicamente devem enviar os dados a respeito de todas as vendas realizadas de medicamentos sujeitos à escrituração no SNGPC. Os dados foram disponibilizados no [portal de dados abertos](https://dados.gov.br/dados/conjuntos-dados/venda-de-medicamentos-controlados-e-antimicrobianos---medicamentos-industrializados) da Agência Nacional de Vigilância Sanitária (Anvisa).
+Os dados que serão utilizados na análise compreendem o período de 12 meses do ano de 2019, que integram um conjunto de doze arquivos em formato "CSV". Os dados foram extraídos do Sistema Nacional de Gerenciamento de Produtos Controlados (SNGPC), provenientes apenas de farmácias e drogarias privadas que periodicamente devem enviar os dados a respeito de todas as vendas realizadas de medicamentos sujeitos à escrituração no SNGPC. Os dados foram disponibilizados no [portal de dados abertos](https://dados.gov.br/dados/conjuntos-dados/venda-de-medicamentos-controlados-e-antimicrobianos---medicamentos-industrializados) da Agência Nacional de Vigilância Sanitária (Anvisa).
 
 ## 📋 Tópicos da análise
 
