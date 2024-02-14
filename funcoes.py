@@ -175,3 +175,43 @@ def graf_barplot(dataframe, x, y, title='Barplot da variável', hue=None, rotati
     plt.tight_layout()
     plt.subplots_adjust(wspace=0.15, hspace=0.2)
     plt.show()
+    
+    
+# Função para geração de gráfico countplot
+    
+def graf_lineplot(dataframe, x, y, title='Lineplot da variável', xlabel='Eixo X', ylabel='Eixo Y', hue=None, palette=palette):
+    '''
+    Função para gerar um gráfico de linhas.
+
+    :param dataframe: DataFrame
+        DataFrame contendo os dados.
+    :param x: str
+        Nome da coluna a ser plotada no eixo x.
+    :param y: str
+        Nome da coluna a ser plotada no eixo y.
+    :param title: str, opcional
+        Título a ser atribuído ao gráfico.
+    :param xlabel: str
+        Título a ser atribuído ao eixo x.
+    :param ylabel: str
+        Título a ser atribuído ao eixo y.
+    :param hue: str, opcional
+        Nome da coluna usada para distinguir subcategorias no eixo x.
+    :param palette: str, opcional
+        Paleta de cores pré-definida.  
+	'''
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    # Plotar o gráfico
+    plt.figure(figsize=(12, 8))
+    sns.lineplot(data=dataframe, x=x, y=y,
+                 hue=hue, marker='o', ci=None, palette=palette)
+    # Adiciona título ao gráfico
+    plt.title(f'{title}')
+    # Adiciona título ao eixo x
+    plt.xlabel(f'{xlabel}')
+    # Adiciona título ao eixo y
+    plt.ylabel(f'{ylabel}')
+    # Adiciona legenda
+    plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+    plt.show()
