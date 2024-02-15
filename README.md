@@ -56,6 +56,8 @@ Os dados que serão utilizados na análise compreendem o período de 12 meses do
     - Biblioteca Numpy
     - Biblioteca Warnings
     - Biblioteca Tabulate
+    - Biblioteca PySpark
+    - Biblioteca Glob
 
 ## 💳 Créditos
 
